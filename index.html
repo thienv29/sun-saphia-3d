@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Blanca City · Tòa Beacon 1 – Hệ thống Sa bàn 3D, Mặt bằng Sale 2D & Quản trị Đa dự án</title>
+  <script type="module" crossorigin src="/assets/index-s5BtLMOm.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor-three-Du3NV8gP.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-postfx-0mF-40-N.js">
+  <link rel="stylesheet" crossorigin href="/assets/index-Eb24U0BQ.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="badge" id="project-badge">ONE ROS 3D</span>
+      <div class="brand-titles">
+        <div class="title" id="plan-title">Đang tải dự án…</div>
+        <div class="hint" id="hint">Kéo chuột để xoay · Cuộn để phóng to</div>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <nav class="modes" id="modes-nav">
+        <button type="button" data-mode="tower" class="active">🏢 Toàn tòa 3D</button>
+        <button type="button" data-mode="floor">🛋️ Mặt bằng 3D</button>
+        <button type="button" id="btn-sale-mode">📋 Bảng giá 2D</button>
+        <button type="button" data-mode="podium" class="mode-extra hidden">🏛️ Phối cảnh đế</button>
+        <button type="button" data-mode="pano360" class="mode-extra hidden">🌐 Tour 360°</button>
+        <button type="button" data-mode="unit" class="hidden" aria-hidden="true">🏠 Xem căn 3D</button>
+        <button type="button" data-mode="walk" class="hidden" aria-hidden="true">🚶 Đi bộ</button>
+      </nav>
+    </div>
+
+    <div class="toggles">
+      <details class="tools-dropdown" id="tools-dropdown">
+        <summary class="tools-summary" title="Chuyển dự án, Góc nhìn phụ & Quản trị">⚙️</summary>
+        <div class="tools-menu">
+          <div class="tools-proj-box">
+            <span>🏗️ Dự án đang xem</span>
+            <select id="project-select" class="project-select" title="Chuyển đổi Dự án / Tòa nhà"></select>
+          </div>
+          <div class="tools-divider"></div>
+          <button type="button" id="menu-btn-podium">🏛️ Xem Phối cảnh Khối đế & Đường</button>
+          <button type="button" id="menu-btn-360">🌐 Xem Tour 360° Thực tế</button>
+          <button type="button" id="btn-top">📐 Nhìn thẳng từ trên xuống</button>
+          <div class="tools-divider"></div>
+          <label><input type="checkbox" id="chk-plan" /> Hiện nét bản vẽ CAD</label>
+          <label><input type="checkbox" id="chk-status-color" /> Tô màu giỏ hàng 3D</label>
+          <label class="hidden"><input type="checkbox" id="chk-ao" /> Đổ bóng sâu (AO)</label>
+          <div class="tools-divider"></div>
+          <button id="btn-admin" class="admin-open-btn">🔐 Quản trị Dự án (Admin)</button>
+        </div>
+      </details>
+      <button id="btn-toggle-panel" class="panel-toggle-btn hidden" aria-hidden="true">Ẩn</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Zero-WebGL Fast 2D/Mobile Sales Consultation View -->
+    <div id="sale-lite-view" class="sale-lite-view hidden"></div>
+
+    <!-- Interactive 3D & 360° Viewport -->
+    <div id="viewport">
+      <div id="loading">Đang dựng phối cảnh 3D & nội thất…</div>
+      <div id="walk-help" class="hidden"></div>
+      <div id="pano-bar" class="pano-bar hidden"></div>
+      <div id="touch-pad" class="hidden">
+        <button data-move="fwd">▲</button>
+        <button data-move="back">▼</button>
+      </div>
+    </div>
+
+    <!-- Ultra-Simple Sales Consultation Card (No complicated drawer!) -->
+    <aside class="panel" id="right-panel">
+      <section class="locator-section">
+        <div class="tower-locator-box" id="tower-locator-box">
+          <div class="locator-row">
+            <label class="locator-field">
+              <span>1. Chọn Tầng</span>
+              <select id="select-exact-floor" title="Chọn tầng trên tòa tháp"></select>
+            </label>
+            <label class="locator-field">
+              <span>2. Chọn Căn hộ</span>
+              <select id="select-exact-unit" title="Chọn mã căn hộ"></select>
+            </label>
+          </div>
+        </div>
+        <!-- Hidden legacy containers kept for compatibility -->
+        <div id="plan-list" class="hidden"></div>
+        <div id="status-filters" class="hidden"></div>
+        <div id="type-filters" class="hidden"></div>
+        <span id="unit-count" class="hidden">0</span>
+        <div id="unit-list" class="hidden"></div>
+      </section>
+
+      <section id="unit-card"></section>
+    </aside>
+  </main>
+
+  <!-- Multi-Project Admin Ingestion & Configuration Studio Modal -->
+  <div id="admin-modal" class="admin-modal hidden"></div>
+
+</body>
+</html>
